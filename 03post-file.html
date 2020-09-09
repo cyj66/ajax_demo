@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>post提交文件</title>
+</head>
+<body>
+<!--大文件上传要改服务器配置，更改.ini文件-->
+    <form action="03post-file.php" method="post" enctype="multipart/form-data">
+<!--        提交表单时有上传的文件内容，则用这个固定语句enctype-->
+        <input type="file" name="upfile"><br>
+        <input type="submit" value="上传"><br>
+    </form>
+</body>
+</html>

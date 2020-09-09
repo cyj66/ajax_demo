@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			div{
+				margin:100px auto;
+				width: 300px;
+				height: 300px;
+				background-color: salmon;
+				text-align: center;
+			}
+			div img{
+				margin:0 auto;
+				display: block;
+				height: 200px;
+				width: 200px;
+				background-color: cadetblue;
+			}
+			h4{
+				transform: translateY(50%);
+			}
+		</style>
+	</head>
+	<script src="07myajax2.js"></script>
+	<body>
+		<div>
+			<h4>商品名称</h4>
+			<img src="" alt="">
+			<p>商品描述</p>
+			<button name="nz">女装</button>
+			<button name="bb">包包</button>
+			<button name="tx">拖鞋</button>
+		</div>
+		
+		<script>
+			var otitle=document.querySelector('h4');
+			var oimg=document.querySelector('img');
+			var op=document.querySelector('p');
+			var btn=document.querySelectorAll('button');
+			for(var i=0;i<btn.length;i++){
+				btn[i].onclick=function(){
+					var that=this;
+					ajax({
+						type:"get",
+						url:"08case.php",
+						data:{"name":this.getAttribute("name")},
+						timeout:3000,
+						success:function(xhr){
+							/*var res=xhr.responseText.split("|");
+							title.innerHTML=res[0];
+							p.innerHTML=res[1];
+							img.setAttribute("src",res[2]);*/
+							/*var res=xhr.responseXML;
+							console.log(res);
+							var name=that.getAttribute("name");     //此处的this已经和按钮不对应了
+							var title=res.querySelector(name+">title").innerHTML;
+							var des=res.querySelector(name+">des").innerHTML;
+							var image=res.querySelector(name+">image").innerHTML;
+							otitle.innerHTML=title;
+							op.innerHTML=des;
+							oimg.setAttribute("src",image);*/
+							var name=that.getAttribute("name");
+							var str=xhr.responseText;
+							var obj=JSON.parse(str);
+							var subobj=obj[name];
+							otitle.innerHTML=subobj.title;
+							op.innerHTML=subobj.des;
+							oimg.setAttribute("src",subobj.image);
+						},
+						error:function(xhr){
+							alert(xhr.status);
+						}
+					})	
+				}
+			}
+		</script>
+	</body>
+</html>

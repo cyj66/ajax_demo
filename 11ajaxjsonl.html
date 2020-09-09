@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="07myajax2.js"></script>
+    <script>
+        window.onload=function(){
+            var btn=document.querySelector('button');
+            btn.onclick=function(){                    //试用自己封装的函数
+                ajax(
+                    {
+                        type:"get",
+                        url:"11ajaxjson.php",
+                        success:function (xhr) {
+                            console.log(xhr.responseText);
+                            var str=xhr.responseText;
+                            var obj=JSON.parse(str);    //转换成js对象
+                            console.log(obj);
+                            console.log(obj.name);
+                            console.log(obj.age);
+
+                        },
+                        error:function (xhr) {
+                            console.log(xhr.status);
+                        }
+                    }
+                );
+            }
+        }
+    </script>
+<!--    1.ajax是与服务器交换数据并更新部分网页的技术，在不重新加载整个页面的情况下-->
+<button>发送请求</button>
+</body>
+</html>

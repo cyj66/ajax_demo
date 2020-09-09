@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button>发送请求</button>
+<!--记得要引入自己封装的js文件-->
+<script src="05myajax.js"></script>
+<script>
+   window.onload=function () {
+       var btn=document.querySelector("button");
+       btn.onclick=function(){
+           ajax("04ajaxget.php",{
+               "name":"cyj",
+               "age":"20"
+           },3000,function(xhr){
+               alert(xhr.responseText);
+           },function(xhr){
+               alert("请求失败");
+           });
+       }
+   }
+</script>
+</body>
+</html>

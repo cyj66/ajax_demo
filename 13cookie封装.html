@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			window.onload=function(){
+				function addcookie(key,value,day,path,domain){
+					
+					//1.处理默认保存的路径
+					var index=location.pathname.lastIndexOf("/");
+					var currentPath=location.pathname.slice(0,index);
+					path=path||currentPath;   //逻辑或短路
+					
+					//2.处理默认保存的domain
+					domain=domain||document.domain;   //同逻辑或短路，均表示有传入该参数则用该参数，没有则用默认参数
+					
+					//3.处理默认的过期时间
+					if(!day){
+						document.cookie=key+"="+value+";path="+path+";domain="+domain+";";   
+					}else{
+						var date=new Date();
+						date.setDate(date.getDate()+day);
+						document.cookie=key+"="+value+";expires="+date.toGMTString()+";path="+path+";domain="+domain+";";   //该函数可以把Date对象转换为字符串
+					}		
+				}	
+				// addcookie("gender","male");
+				// addcookie("gender","female",2,"/","127.0.0.1");
+				// addcookie("name","nuoshou",20,"/","127.0.0.1");
+				
+				function getcookie(key){
+					console.log(document.cookie);
+					var res=document.cookie.split(";");
+					for(var i=0;i<res.length;i++){
+						var temp=res[i].split("=");
+						if(temp[0].trim()==key){
+							return temp[1];
+						}
+					}
+				}
+				console.log(getcookie("name"));
+				
+				function delcookie(key,path){
+					addcookie(key,getcookie(key),-1,path);    //如果没有path参数则只能删除默认路径下的cookie
+				}
+				delcookie("gender","/");
+			}
+			
+			
+		</script>
+	</body>
+</html>

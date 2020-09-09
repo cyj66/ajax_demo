@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="07myajax2.js"></script>
+    <script>
+        window.onload=function(){
+            var btn=document.querySelector('button');
+            // btn.onclick=function(){
+            //     //1.创建一个异步对象
+            //     var xmlhttp=new XMLHttpRequest();
+            //     //2.设置请求方式和请求地址
+            //     //.open()
+            //     // method：请求的类型；GET 或 POST
+            //     // url：文件在服务器上的位置
+            //     // async：true（异步）或 false（同步）,一般都是true，默认也是，可以不写
+            //     xmlhttp.open("POST","06ajaxpost.php",true)
+            //     //xmlhttp.open("GET","04ajaxget.php?t="+(new Data().getTime()),true)    兼容IE5/6
+            //     xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");//该代码必须放在open和send中间，直接在w3c中复制粘贴得来
+            //     //3.发送请求
+            //     xmlhttp.send("name=cyj&pwd=123");    //post的传参放在此处
+            //     //4.监听状态的变化
+            //     xmlhttp.onreadystatechange=function () {
+            //         // 0 请求未初始化
+            //         // 1 服务器连接已建立
+            //         // 2 请求已接收
+            //         // 3 请求处理中
+            //         // 4 请求已完成，且响应已就绪
+            //         if(xmlhttp.readyState===4){    //判断是否请求成功
+            //             if(xmlhttp.status>=200&&xmlhttp.status<300||xmlhttp.status==304){    //判断状态码
+            //                 //5.处理返回结果
+            //                 console.log("接收到服务器返回的数据");
+            //                 alert(xmlhttp.responseText);     //返回服务器中文本
+            //             }else{
+            //                 console.log("没有接收到服务器返回的数据");
+            //             }
+            //
+            //         }
+            //     }
+            // }
+            btn.onclick=function(){                    //试用自己封装的函数
+                ajax({
+                        success:function(xhr){
+                            alert(xhr.responseText);
+                        },
+                         error:function(xhr){
+                            alert("defeat");
+                         },
+                        type:"get",
+                        url:"04ajaxget.php",
+                        data:{
+                        "name":"lnj",
+                        "pwd":"5243"
+                         },
+                        timeout:3000
+                });
+            }
+        }
+    </script>
+<!--    1.ajax是与服务器交换数据并更新部分网页的技术，在不重新加载整个页面的情况下-->
+<button>发送请求</button>
+</body>
+</html>

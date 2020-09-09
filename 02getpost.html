@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>get</title>
+    <script>
+    </script>
+</head>
+<body>
+
+<form action="02getpost.php" method="post">
+    <!--    要提交的都需要添加name属性-->
+    <input type="text" name="username"><br>
+    <input type="password" name="userpwd"><br>
+    <input type="submit"><br>
+</form>
+</body>
+</html>
+
+<!--get/post异同：-->
+<!--1、同：都是将数据提交到远程服务器-->
+<!--2、异：提交数据存储的位置不同：get请求会将提交的数据拼接到URL后面，post则放到请求体当中；-->
+<!--       提交数据大小限制不同：get请求对数据大小有限制，post数据大小无限制；-->
+<!--       由此得出应用场景的不同：get用于提交非敏感数据和小数据，post适用于提交敏感数据和大数据。-->

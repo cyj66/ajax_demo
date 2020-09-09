@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<person>
+    <name>李南江</name>
+    <age>33</age>
+</person>
+        <!--xml格式：1.第一行必须是上面这个，2.必须有根节点，所有内容都必须放在里面；3.所有标签名都可随便取-->

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			window.onload=function(){
+				// 一、cookie:会话跟踪技术,客户端,作用：将网页中的数据保存到浏览器中
+				// session:会话跟踪技术,服务端
+				
+				//二、cookie生命周期：1.默认为一次会话（浏览器被关闭）；
+				//2.如果通过expires=设置了过期时间，并且下次打开浏览器的时候还没有过期，则数据还是存在的；
+				//3.如果通过expires=设置了过期时间，并且已经过期，那么会立即删除保存的数据
+	
+				//三、cookie注意点：1.默认不会保存任何数据；2.cookie不能一次性设置多条数据，只能一条一条设置；
+				//3.有大小和个数的限制：个数20~50,大小4KB左右
+				
+				//四、cookie作用范围：同一浏览器的同一路径下的不同文件可互相访问；如果在同一个浏览器中，则其下一级路径中也可访问
+				//换言之，若保存在根路径下，一切皆可访问；假设在www.it666.com保存了一个cookie,那么在edu.it666.com中无法访问，
+				//需要定义document.cookie="name=zs;path:/;domain=it666.com";
+				var date=new Date();
+				date.setDate(date.getDate()+1);
+				//document.cookie="age=33;expires="+date.toGMTString(); 
+				document.cookie="name=zs;path:/;"     //根路径
+				 
+:				console.log(document.cookie);
+				 
+			}
+		</script>
+	</body>
+</html>
